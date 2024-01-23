@@ -18,7 +18,7 @@
         <p id="card-type">Type: {{ cardData[randomNumber]?.type }}</p>
         <p id="card-description">Description:<br/>{{ cardData[randomNumber]?.description }}</p>
       </div>
-      <img v-if="randomNumber != null" :src="`./assets/img/${randomNumber}.jpg`" />
+      <img v-if="randomNumber != null" :src="`./img/${randomNumber}.jpg`" />
       <p v-else>Draw a card, see what Fate has to say about you.</p>
     </div>
   </div>
@@ -35,7 +35,7 @@
       background-color: #000; /* Black background */
       color: #0f0; /* Green text */
 
-      background-image: url('./assets/img/reddicemovin.gif');
+      background-image: url('./img/reddicemovin.gif');
       background-repeat: repeat;
     }
 
