@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Draw a Card</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Pick a Card - Any Card</h1>
+    <div class="buttons">
+      <button @click="pickRandomNumber">Draw a Card</button>
+    </div>
+    <div class="body">
+      <div v-if="randomNumber != null">
+        <p id="card-type">Type: {{ cardData[randomNumber]?.type }}</p>
+        <p id="card-description">Description:<br/>{{ cardData[randomNumber]?.description }}</p>
+      </div>
+      <img v-if="randomNumber != null" :src="`./assets/img/${randomNumber}.jpg`" />
+      <p v-else>Draw a card, see what Fate has to say about you.</p>
+    </div>
+  </div>
+  
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000; /* Black background */
+      color: #0f0; /* Green text */
+
+      background-image: url('./assets/img/reddicemovin.gif');
+      background-repeat: repeat;
+    }
+
+    #app {
+      width: 80%;
+      max-width: 600px; /* Set a max-width for better readability */
+      text-align: center;
+      background-color: #000; /* Black background */
+      padding: 20px;
+      border: 1px solid #0f0; /* Green border */
+      border-radius: 8px;
+      overflow: hidden; /* Ensures no spillover */
+    }
+
+    .buttons {
+      margin-bottom: 20px;
+    }
+    
+    button {
+      background-color: #0f0; /* Green */
+      border: 1px solid #fff; /* White border */
+      color: black;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #000;
+      color: #0f0;
+    }
+    
+    .body {
+      display: flex;
+      text-align: left;
+    }
+    
+    .body p {
+      margin-right: 20px;
+      font-size: 18px;
+    }
+    
+    .body img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    #card-type {}
+
+    #card-description {
+      padding-right: 10px;
+      line-height: 1.6; /* Increase line spacing */
+      font-size: 16px; /* Increase font size for readability */
+    }
+  </style>
+  
+  <script>
+    const { createApp, ref, onMounted } = Vue;
+    
+    const app = createApp({
+      setup() {
+        const randomNumber = ref(null);
+        const cardData = {
+          "1": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "2": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "3": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "4": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "5": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "6": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "7": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "8": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "9": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "10": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "11": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "12": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "13": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "14": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "15": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "16": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "17": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "18": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "19": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "20": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "21": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "22": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "23": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "24": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "25": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "26": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "27": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "28": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "29": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "30": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "31": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "32": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "33": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "34": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "35": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "36": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "37": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "38": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "39": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "40": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "41": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "42": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "43": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "44": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "45": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "46": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "47": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "48": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "49": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "50": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "51": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "52": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "53": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "54": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."}
+        }
+  
+      function pickRandomNumber() {
+        randomNumber.value = Math.floor(Math.random() * 54) + 1;
+      }
+
+      // Function to handle keydown events
+      function handleKeydown(event) {
+        if (event.code === 'Space') {
+          event.preventDefault(); // Prevent the default action of the space bar (scrolling)
+          pickRandomNumber();
+        }
+      }
+
+      onMounted(() => {
+        window.addEventListener('keydown', handleKeydown);
+      });
+  
+      return {
+        cardData,
+        randomNumber,
+        pickRandomNumber
+      };
+    }
+  });
+  
+  app.mount("#app");
+  </script>
+</body>
+</html>
