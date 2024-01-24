@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Draw a Card</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <title>Harrowed</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 </head>
 
@@ -16,6 +17,7 @@
     <div class="body">
       <div v-if="randomNumber != null">
         <p id="card-type">Type: {{ cardData[randomNumber]?.type }}</p>
+        <br />
         <p id="card-description">Description:<br/>{{ cardData[randomNumber]?.description }}</p>
       </div>
       <img v-if="randomNumber != null" :src="`./img/${randomNumber}.jpg`" />
@@ -24,6 +26,19 @@
   </div>
   
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    
     body {
       font-family: 'Courier New', monospace;
       margin: 0;
@@ -31,11 +46,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       background-color: #000; /* Black background */
       color: #0f0; /* Green text */
 
-      background-image: url('./img/reddicemovin.gif');
+      background-image: url('./favicon.ico');
       background-repeat: repeat;
     }
 
@@ -104,87 +118,87 @@
       setup() {
         const randomNumber = ref(null);
         const cardData = {
-          "1": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "2": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "3": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "4": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "5": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "6": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "7": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "8": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "9": {"type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "10": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "11": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "12": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "13": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "14": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "15": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "16": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "17": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "18": {"type": "INT", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "19": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "20": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "21": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "22": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "23": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "24": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "25": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "26": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "27": {"type": "CON", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "28": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "29": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "30": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "31": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "32": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "33": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "34": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "35": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "36": {"type": "WIS", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "37": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "38": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "39": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "40": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "41": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "42": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "43": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "44": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "45": {"type": "DEX", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "46": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "47": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "48": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "49": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "50": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "51": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "52": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "53": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
-          "54": {"type": "CHR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."}
+          "1":  {"name": "Avalance", "type": "DEX", "description": "This is the lawful evil card of dexterity. It represents disaster: an unthinking panic and destruction that overruns all."},
+          "2":  {"name": "Bear", "type": "STR", "description": "This is the neutral card of strength. It represents pure strength that cannot be truly tamed or trained."},
+          "3":  {"name": "Beating", "type": "STR", "description": "This is the neutral evil card of strength. It represents an assault from all quarters, or the mental dissolution of the self."},
+          "4":  {"name": "Betrayal", "type": "CHR", "description": "This is the neutral evil card of charisma. It represents selfishness and envy."},
+          "5":  {"name": "Big Sky", "type": "STR", "description": "This is the chaotic good card of strength. It represents momentous change, as when all the slaves of a nation are emancipated."},
+          "6":  {"name": "Brass Dwarf", "type": "CON", "description": "This is the lawful neutral card of constitution, showing an azer. It represents a creature invulnerable to a current threat."},
+          "7":  {"name": "Carnival", "type": "WIS", "description": "This is the chaotic neutral card of wisdom. It represents illusions and false dreams."},
+          "8":  {"name": "Courtesan", "type": "CHR", "description": "This is the chaotic neutral card of charisma. It represents political intrigue and the superficiality of social niceties."},
+          "9":  {"name": "Cricket", "type": "DEX", "description": "This is the neutral good card of dexterity. It represents the grig, quick travel, and the reward at the end of a journey."},
+          "10": {"name": "Crows", "type": "DEX", "description": "This is the neutral evil card of dexterity. It represents murder, theft, and the violent loss of that which is loved."},
+          "11": {"name": "Cyclone", "type": "STR", "description": "This is the chaotic evil card of strength. It represents an unstoppable, destructive force unleashed through the plots of intelligent creatures."},
+          "12": {"name": "Dance", "type": "DEX", "description": "This is the lawful good card of dexterity. It represents a complicated framework that requires the cooperation of all to avoid collapse."},
+          "13": {"name": "Demon's Lantern", "type": "DEX", "description": "This is the chaotic evil card of dexterity. It represents an impossible situation of traps, mind tricks, and sleight of hand."},
+          "14": {"name": "Desert", "type": "CON", "description": "This is the chaotic good card of constitution. It represents an environment too difficult for anyone to survive without help. The sphinx may represent a source of salvation from plague."},
+          "15": {"name": "Eclipse", "type": "WIS", "description": "This is the lawful evil card of wisdom. It represents loss of faith and purpose, and the subject's doubt about his abilities or prospects."},
+          "16": {"name": "Empty Throne", "type": "CHR", "description": "This is the lawful good card of charisma. It represents those who are gone, or a ghost of the past that has taught important lessons."},
+          "17": {"name": "Fiend", "type": "STR", "description": "This is the lawful evil card of strength. It is a devil who devours the masses of the innocent, and can represent the deaths of many in a disaster. "},
+          "18": {"name": "Foreign Trader", "type": "INT", "description": "This is the neutral card of intelligence. It represents spies, merchants, and those who trade in information."},
+          "19": {"name": "Forge", "type": "STR", "description": "This is the lawful neutral card of strength. It represents strength through diversity, or strength from many sources united against a single trial."},
+          "20": {"name": "Hidden Truth", "type": "INT", "description": "This is the lawful good card of intelligence. It represents the discovery of the greater truth within."},
+          "21": {"name": "Idiot", "type": "INT", "description": "This is the neutral evil card of intelligence. It represents folly, greed, blackmail, bribery, or hubris."},
+          "22": {"name": "Inquisitor", "type": "CON", "description": "This is the lawful neutral card of intelligence. It represents an immutable object that cannot be deceived or influenced."},
+          "23": {"name": "Joke", "type": "INT", "description": "This is the chaotic good card of intelligence. It represents a monster that can only be defeated through trickery, or the value of humor in circumventing difficult people."},
+          "24": {"name": "Juggler", "type": "DEX", "description": "This is the chaotic good card of dexterity. It represents destiny, deities, and those who play with the fates of others."},
+          "25": {"name": "Keep", "type": "STR", "description": "This is the neutral good card of strength. It represents quiet, unshakeable strength that withstands any hardship."},
+          "26": {"name": "Liar", "type": "CHR", "description": "This is the chaotic evil card of charisma. It represents destructive, treacherous love. The lamia signals obsession, star-crossed lovers, or unrequited desire."},
+          "27": {"name": "Locksmith", "type": "DEX", "description": "This is the lawful neutral card of dexterity. It represents the keys the subject needs to unlock his fate. The card grants the tools needed to unlock some new place, puzzle, or hoard."},
+          "28": {"name": "Lost", "type": "WIS", "description": "This is the chaotic evil card of wisdom. The bodak represents the permanently insane, lost among lunatics and psychopaths in insane asylums. It is a card of emptiness."},
+          "29": {"name": "Marriage", "type": "CHR", "description": "This is the lawful neutral card of charisma. It represents a union of peoples, ideas, or kingdoms that might be as productive or as ruinous as the bonding of a salamander and a water weird."},
+          "30": {"name": "Midwife", "type": "WIS", "description": "This is the neutral good card of wisdom. It represents the enabler or conduit of new creation, information, or arrivals."},
+          "31": {"name": "Mountain Man", "type": "CON", "description": "This is the chaotic neutral card of constitution. This giant represents an encounter with a physical power outside of the subject's control."},
+          "32": {"name": "Mute Hag", "type": "WIS", "description": "This is the neutral evil card of wisdom. It represents the insightful hag, a purveyor of blood pacts, treacherous secrets, and discord."},
+          "33": {"name": "Owl", "type": "WIS", "description": "This is the neutral card of wisdom. It represents the harsh wisdom of the natural order. The owl holds a needle that can bind life together or pick it apart."},
+          "34": {"name": "Paladin", "type": "STR", "description": "This is the lawful good card of strength. It represents standing resolutely against trouble, without backing down."},
+          "35": {"name": "Peacock", "type": "DEX", "description": "This is the neutral card of dexterity. It represents a great beauty that can only be preserved if petrified and frozen in time for eternity, as by a cockatrice's glare."},
+          "36": {"name": "Publican", "type": "WIS", "description": "This is the chaotic good card of wisdom. It represents fellowship and refuge. The cyclops is a seemingly inconsequential figure who nonetheless has relevant insight."},
+          "37": {"name": "Queen Mother", "type": "WIS", "description": "This is the lawful neutral card of wisdom. This formian is the personification of knowledge, who is fond of the powerless, the underclass, and those who will show her obeisance."},
+          "38": {"name": "Rabbit Prince", "type": "DEX", "description": "This is the chaotic neutral card of dexterity. It represents the quirky vicissitudes of melee combat. The Rabbit Prince is the personification of the capriciousness of battle, and his broken sword indicates that defeat can come to anyone. The card sometimes represents younger members of royal or noble houses."},
+          "39": {"name": "Rakshasa", "type": "INT", "description": "This is the lawful evil card of intelligence. The rakshasa represents domination, mental control, and slavery."},
+          "40": {"name": "Sickness", "type": "CON", "description": "This is the neutral evil card of constitution. It represents corruption, famine, plague, pestilence, and disease."},
+          "41": {"name": "Snakebite", "type": "INT", "description": "This is the chaotic evil card of intelligence. It represents poison, venom, assassination, and discord."},
+          "42": {"name": "Survivor", "type": "CON", "description": "This is the neutral good card of constitution. It represents a creature that has managed to survive a terrible ordeal, when everyone thought him lost."},
+          "43": {"name": "Tangled Briar", "type": "CON", "description": "This is the lawful evil card of constitution. It represents a historical thing or creature that will have some influence on the question."},
+          "44": {"name": "Teamster", "type": "CON", "description": "This is the neutral card of constitution. It represents an external force that drives the subject on."},
+          "45": {"name": "Theater", "type": "CHR", "description": "This is the neutral good card of charisma. It represents prophecy, with a true prophet acting a part as the puppet of the gods."},
+          "46": {"name": "Trumpet", "type": "CON", "description": "This is the lawful good card of constitution. It represents an archon who dives aggressively and righteously into danger."},
+          "47": {"name": "Twins", "type": "CHR", "description": "This is the neutral card of charisma. The doppelganger represents duality of purpose or identity, or indecision and fence-sitting for the subject or the entire spread."},
+          "48": {"name": "Tyrant", "type": "CHR", "description": "This is the lawful evil card of charisma. It represents a ruler who harms those he rules."},
+          "49": {"name": "Unicorn", "type": "CHR", "description": "This is the chaotic good card of charisma. It represents one who generously offers up that which is sought."},
+          "50": {"name": "Uprising", "type": "STR", "description": "This is the chaotic neutral card of strength. It represents overwhelming strength that catches the subject up in something much more powerful."},
+          "51": {"name": "Vision", "type": "INT", "description": "This is the chaotic neutral card of intelligence. It represents esoteric and arcane knowledge, or madness."},
+          "52": {"name": "Wanderer", "type": "INT", "description": "This is the neutral good card of intelligence. It represents a centaur collector who appreciates things others discard as junk."},
+          "53": {"name": "Waxworks", "type": "CON", "description": "This is the chaotic evil card of constitution. It represents a place of torture, imprisonment, helplessness, and paralysis."},
+          "54": {"name": "Winged Serpent", "type": "WIS", "description": "This is the lawful good card of wisdom. It represents the couatl, the bridge of understanding between the towers of knowledge and judgement."}
         }
   
-      function pickRandomNumber() {
-        randomNumber.value = Math.floor(Math.random() * 54) + 1;
-      }
-
-      // Function to handle keydown events
-      function handleKeydown(event) {
-        if (event.code === 'Space') {
-          event.preventDefault(); // Prevent the default action of the space bar (scrolling)
-          pickRandomNumber();
+        function pickRandomNumber() {
+          randomNumber.value = Math.floor(Math.random() * 54) + 1;
         }
-      }
 
-      onMounted(() => {
-        window.addEventListener('keydown', handleKeydown);
-      });
+        // Function to handle keydown events
+        function handleKeydown(event) {
+          if (event.code === 'Space') {
+            event.preventDefault(); // Prevent the default action of the space bar (scrolling)
+            pickRandomNumber();
+          }
+        }
+
+        onMounted(() => {
+          window.addEventListener('keydown', handleKeydown);
+        });
   
-      return {
-        cardData,
-        randomNumber,
-        pickRandomNumber
-      };
-    }
-  });
+        return {
+          cardData,
+          randomNumber,
+          pickRandomNumber
+        };
+      }
+    });
   
-  app.mount("#app");
+    app.mount("#app");
   </script>
 </body>
 </html>
