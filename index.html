@@ -38,7 +38,7 @@
       overflow-x: hidden;
       overflow-y: auto;
     }
-    
+
     body {
       font-family: 'Courier New', monospace;
       margin: 0;
@@ -67,7 +67,7 @@
     .buttons {
       margin-bottom: 20px;
     }
-    
+
     button {
       background-color: #0f0; /* Green */
       border: 1px solid #fff; /* White border */
@@ -81,22 +81,22 @@
       cursor: pointer;
       transition: background-color 0.3s, color 0.3s;
     }
-    
+
     button:hover {
       background-color: #000;
       color: #0f0;
     }
-    
+
     .body {
       display: flex;
       text-align: left;
     }
-    
+
     .body p {
       margin-right: 20px;
       font-size: 18px;
     }
-    
+
     .body img {
       max-width: 300px;
       height: auto;
@@ -172,33 +172,42 @@
           "52": {"name": "Wanderer", "type": "INT", "description": "This is the neutral good card of intelligence. It represents a centaur collector who appreciates things others discard as junk."},
           "53": {"name": "Waxworks", "type": "CON", "description": "This is the chaotic evil card of constitution. It represents a place of torture, imprisonment, helplessness, and paralysis."},
           "54": {"name": "Winged Serpent", "type": "WIS", "description": "This is the lawful good card of wisdom. It represents the couatl, the bridge of understanding between the towers of knowledge and judgement."}
-        }
-  
-        function pickRandomNumber() {
-          randomNumber.value = Math.floor(Math.random() * 54) + 1;
-        }
+        };
 
-        // Function to handle keydown events
-        function handleKeydown(event) {
-          if (event.code === 'Space') {
-            event.preventDefault(); // Prevent the default action of the space bar (scrolling)
-            pickRandomNumber();
+        const pickRandomNumber = () => {
+          const totalCards = Object.keys(cardData).length;
+          randomNumber.value = Math.floor(Math.random() * totalCards) + 1;
+          updateUrlWithCard(randomNumber.value);
+        };
+
+        const updateUrlWithCard = (cardNumber) => {
+          const url = new URL(window.location);
+          url.searchParams.set('card', cardNumber);
+          window.history.pushState({}, '', url);
+        };
+
+        const getCardFromUrl = () => {
+          const params = new URLSearchParams(window.location.search);
+          const cardParam = params.get('card');
+          if (cardParam && cardData[cardParam]) {
+            randomNumber.value = cardParam;
           }
-        }
+        };
 
         onMounted(() => {
-          window.addEventListener('keydown', handleKeydown);
+          getCardFromUrl();
         });
-  
+
         return {
-          cardData,
           randomNumber,
+          cardData,
           pickRandomNumber
         };
       }
     });
-  
-    app.mount("#app");
+
+    app.mount('#app');
   </script>
 </body>
+
 </html>
