@@ -175,33 +175,34 @@
         };
 
         const pickRandomNumber = () => {
-          randomNumber.value = Math.floor(Math.random() * Object.keys(cardData).length) + 1;
+          const totalCards = Object.keys(cardData).length;
+          randomNumber.value = Math.floor(Math.random() * totalCards) + 1;
+          updateUrlWithCard(randomNumber.value);
         };
 
-        const getQueryParam = (param) => {
-          const urlParams = new URLSearchParams(window.location.search);
-          return urlParams.get(param);
+        const updateUrlWithCard = (cardNumber) => {
+          const url = new URL(window.location);
+          url.searchParams.set('card', cardNumber);
+          window.history.pushState({}, '', url);
         };
 
-        const findCardByName = (name) => {
-          return Object.keys(cardData).find(key => cardData[key].name.toLowerCase() === name.toLowerCase());
+        const getCardFromUrl = () => {
+          const params = new URLSearchParams(window.location.search);
+          const cardParam = params.get('card');
+          if (cardParam && cardData[cardParam]) {
+            randomNumber.value = cardParam;
+          }
         };
 
         onMounted(() => {
-          const cardQuery = getQueryParam('card');
-          if (cardQuery) {
-            const cardKey = findCardByName(cardQuery);
-            if (cardKey) {
-              randomNumber.value = cardKey;
-            } else {
-              pickRandomNumber();  // fallback if the card name is not found
-            }
-          } else {
-            pickRandomNumber();
-          }
+          getCardFromUrl();
         });
 
-        return { randomNumber, cardData, pickRandomNumber };
+        return {
+          randomNumber,
+          cardData,
+          pickRandomNumber
+        };
       }
     });
 
